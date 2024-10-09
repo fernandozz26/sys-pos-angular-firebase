@@ -1,0 +1,14 @@
+{
+    "employes": [
+        {"firsName":"Jose" , "lastName": "Perez Leon", "email":"dsdfs@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"Gabino" , "lastName": "Barrera", "email":"elemento@chucki.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"Laura" , "lastName": "Garza", "email":"autor@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"Cadetes" , "lastName": "Linares", "email":"adicto@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"Juan" , "lastName": "Escutia", "email":"vlubfs@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"Tia" , "lastName": "Felipa", "email":"samss@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"El tiki" , "lastName": "tiki", "email":"dsdfs@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"Jose" , "lastName": "hernadez", "email":"fedfs@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"Juan" , "lastName": "Barragan", "email":"nosequemas@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312},
+        {"firsName":"Arturo" , "lastName": "de real", "email":"arribayo@fdfd.com", "birthdate":"2024-09-26T16:44:34.713Z", "phone": 12312312}
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "offerts":{
+        "startUp":{
+          "details":[
+            {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Ventas"},
+            {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Empleados"},
+            {"val1": "Generación", "val2bold":"", "val3":"", "val4bold":"Tickets"},
+            {"val1": "Envío de PDF por", "val2bold":"", "val3":"", "val4bold":"Email"},
+            {"val1": "", "val2bold":"2", "val3":"Usuarios Administrador", "val4bold":""},
+            {"val1": "", "val2bold":"10", "val3":"Empleados", "val4bold":""},
+            {"val1": "", "val2bold":"100", "val3":"Productos", "val4bold":""}
+          ],
+          "price":1000,
+          "discount": 20
+        },
+        "pyme":{
+          "details":[
+          {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Ventas"},
+          {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Empleados"},
+          {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Administrativo"},
+          {"val1": "Generación", "val2bold":"", "val3":"", "val4bold":"Tickets"},
+          {"val1": "Envío de PDF por", "val2bold":"", "val3":"", "val4bold":"Email"},
+          {"val1": "Respaldo mensual en la ", "val2bold":"", "val3":"", "val4bold":"Nube"},
+          {"val1": "", "val2bold":"4", "val3":"Usuarios Administrador", "val4bold":""},
+          {"val1": "", "val2bold":"100", "val3":"Empleados", "val4bold":""},
+          {"val1": "", "val2bold":"10000", "val3":"Productos", "val4bold":""}
+          ],
+          "price":1500,
+          "discount": 25
+        },
+        "empresarial":{
+          "details":[
+            {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Ventas"},
+            {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Empleados"},
+            {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Administrativo"},
+            {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Analisis y Finanzas"},
+            {"val1": "Módulo", "val2bold":"", "val3":"", "val4bold":"Clientes"},
+            {"val1": "Generación", "val2bold":"", "val3":"", "val4bold":"Tickets"},
+            {"val1": "Envío de PDF por", "val2bold":"", "val3":"", "val4bold":"Email"},
+            {"val1": "Respaldo mensual en la ", "val2bold":"", "val3":"", "val4bold":"Nube"},
+            {"val1": "", "val2bold":"100", "val3":"Usuarios Administrador", "val4bold":""},
+            {"val1": "", "val2bold":"1000000", "val3":"Empleados", "val4bold":""},
+            {"val1": "", "val2bold":"Productos Ilimitados", "val3":"", "val4bold":""}
+          ],
+          "price":1500,
+          "discount": 30
+        }
+    }
+}

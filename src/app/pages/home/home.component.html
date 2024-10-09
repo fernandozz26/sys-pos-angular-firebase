@@ -1,0 +1,11 @@
+<div class="w-full h-full block">
+    
+
+    <div class="cicle-pattern-bg w-full pb-16">
+        <div class="  h-fit grid grid-cols-3 gap-5 pt-16 ml-10 mr-10">
+            
+            <offert-card *ngFor="let offer of offertTypes "  [ofertTitle]="offer" [offertData]="getDataFromKey(offer)"></offert-card>
+        </div>
+    </div>
+    
+</div>

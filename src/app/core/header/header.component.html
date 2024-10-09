@@ -1,0 +1,31 @@
+<nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+       
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          
+          <div class=" sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <div routerLink="/home" [ngClass]="{'bg-gray-900': currentOption == 'Home'}" (click)="currentOption = 'Home'" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white hover:cursor-pointer" aria-current="page">Inicio</div>
+              <div routerLink="/sales" [ngClass]="{'bg-gray-900': currentOption == 'Sales'}" (click)="currentOption = 'Sales'" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white hover:cursor-pointer">Ventas</div>
+              <div routerLink="/employ" [ngClass]="{'bg-gray-900': currentOption == 'Employes'}" (click)="currentOption = 'Employes'" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white hover:cursor-pointer">Empleados</div>
+            </div>
+          </div>
+
+          <div *ngIf="authenticated" (click)="showAccountOptions = !showAccountOptions" class="mt-2 flex absolute -right-16 text-white p-0 m-0 hover:cursor-pointer">
+            <p>Nombre de usuario</p>
+            <mat-icon  matBadge="1" class="ml-5 text-3xl" aria-hidden="false">account_box</mat-icon>
+
+            <div class="absolute block top-8 -left-1  w-56 p-0 m-0 bg-white z-10" *ngIf="showAccountOptions">
+                <mat-nav-list role="list" class="p-0 m-0">
+                  <mat-list-item><button > <mat-icon class="mr-2 -mb-1">settings</mat-icon>Configuracion </button></mat-list-item>
+                  <mat-list-item><button ><mat-icon class="mr-2 -mb-1">assignment_turned_in</mat-icon>Mejorar Plan</button></mat-list-item>
+                  <mat-list-item><button (click)="singOut()"><mat-icon class="mr-2 -mb-1">exit_to_app</mat-icon>Salir</button></mat-list-item>
+                </mat-nav-list>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
