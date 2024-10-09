@@ -20,7 +20,7 @@ import { LoginService } from './service/login.service';
         FormsModule,
         ReactiveFormsModule
     ],
-    providers:[EmployService, LoginService]
+    providers:[]
 })
 
 export class SharedModule{}

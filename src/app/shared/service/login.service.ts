@@ -1,11 +1,9 @@
 import { Injectable, OnInit, inject } from '@angular/core';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
+import { Auth,signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import {FirebaseApp} from '@angular/fire/app'
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { enviroment } from '../../../enviroments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {  } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +12,11 @@ export class LoginService implements OnInit {
   private token!: string | null;
   private snackBar = inject(MatSnackBar);
   public isAuthenticated$ = new BehaviorSubject<boolean>(this.token != null);
-
+  getAuth = inject(Auth);
   constructor(private router: Router) {
-    initializeApp(enviroment);
+    
   }
+
   ngOnInit(): void {
     
   }
@@ -36,12 +35,13 @@ export class LoginService implements OnInit {
   }
 
   doLogin(email: string, password: string): any {
-    signInWithEmailAndPassword(getAuth(), email, password).then(
+    signInWithEmailAndPassword(this.getAuth, email, password).then(
       (response) => {
-        getAuth()
+        this.getAuth
           .currentUser?.getIdToken()
           .then(
             (userToken) => {
+              
               this.token = userToken;
               sessionStorage.setItem('userToken', this.token);
               this.isAuthenticated$.next(this.token != null);
@@ -68,7 +68,7 @@ export class LoginService implements OnInit {
   }
 
   doSignOut(): any {
-    signOut(getAuth())
+    signOut(this.getAuth)
       .then((response) => {
         this.token = null;
         sessionStorage.removeItem("userToken")
