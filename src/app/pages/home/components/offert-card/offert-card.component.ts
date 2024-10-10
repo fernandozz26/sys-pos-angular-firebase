@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SharedModule } from '../../../../shared/shared.module';
-import { Offer } from '../../../../core/model/offer.interface';
+import { Offer } from '../../../../core/model/offer.model';
 
 @Component({
   selector: 'offert-card',

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
-import { Employ } from '../../../core/model/employ.interface';
+import { Employ } from '../../../core/model/employ.model';
 import { EmployService } from '../service/employ.service';
 import { DatePipe } from '@angular/common';
 import e from 'express';
@@ -83,7 +83,6 @@ export class EmployFormComponent implements OnInit {
 
   resetSelectedForm(showForm:boolean):void{
     if(Object.keys(this.selectedEmployee).length > 0){
-      console.log("limpiar employee");
       this.employService.updateSelectedEmployee({}, showForm);
     }
   }

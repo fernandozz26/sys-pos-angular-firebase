@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Employ } from '../../../core/model/employ.interface';
+import { Employ } from '../../../core/model/employ.model';
 import {
   ref,
   remove as removeEmployee,

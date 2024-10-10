@@ -13,6 +13,7 @@ export class LoginService implements OnInit {
   private snackBar = inject(MatSnackBar);
   public isAuthenticated$ = new BehaviorSubject<boolean>(this.token != null);
   getAuth = inject(Auth);
+  
   constructor(private router: Router) {
     if(typeof sessionStorage != undefined){
       this.isAuthenticated$.next(true);

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SharedModule } from '../../shared/shared.module';
 import { OffertCardComponent } from "./components/offert-card/offert-card.component";
-import { Offer } from '../../core/model/offer.interface';
+import { Offer } from '../../core/model/offer.model';
 import * as offersJson from '../../core/json/offerts.json';
 
 @Component({

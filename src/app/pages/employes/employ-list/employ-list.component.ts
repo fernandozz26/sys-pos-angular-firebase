@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { EmployService } from '../service/employ.service';
-import { Employ } from '../../../core/model/employ.interface';
+import { Employ } from '../../../core/model/employ.model';
 import {  MatTableDataSource } from '@angular/material/table';
 
 @Component({

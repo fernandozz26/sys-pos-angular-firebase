@@ -1,6 +1,11 @@
 <div class="block">
-    <div class="w-4/5 mx-auto">
-        <button mat-flat-button (click)="changeForm(true)">Agregar Empleado</button>
+    <div class="w-4/5 mx-auto mt-5 flex">
+        <button mat-flat-button (click)="resetSelectedForm(true)">Agregar Empleado</button>
+        <div class=" flex  items-center justify-center ms-7">
+            <mat-icon>supervisor_account</mat-icon>
+            <span>Total Clientes</span>
+            <span>: {{employes.length}}</span>
+        </div>
     </div>
     <app-employ-form></app-employ-form>
     <app-employ-list></app-employ-list>
