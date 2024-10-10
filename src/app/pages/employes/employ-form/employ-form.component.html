@@ -13,8 +13,7 @@
                         <mat-label>Nombre(s)</mat-label>
                         <input type="text" matInput id="nombre" formControlName="nombre">
                         <mat-error
-                            *ngIf="employReactiveForm?.get('nombre')?.invalid && employReactiveForm?.get('nombre')?.touched">¡Este
-                            campo es obligatorio!</mat-error>
+                            *ngIf="employReactiveForm?.get('nombre')?.invalid && employReactiveForm?.get('nombre')?.touched">¡Este campo es obligatorio!</mat-error>
                     </mat-form-field>
     
                     <mat-form-field class="w-1/2 mt-3 mr-2" >
@@ -30,9 +29,7 @@
                         <mat-label>Email</mat-label>
                         <input type="email" matInput id="email" formControlName="email">
                         <mat-error
-                            *ngIf="employReactiveForm?.get('email')?.invalid && employReactiveForm?.get('email')?.touched">¡Este
-                            campo es
-                            obligatorio!</mat-error>
+                            *ngIf="employReactiveForm?.get('email')?.invalid && employReactiveForm?.get('email')?.touched">¡Este campo es obligatorio!</mat-error>
                     </mat-form-field>
     
                     <mat-form-field class="w-1/2 mt-3 mr-2" >

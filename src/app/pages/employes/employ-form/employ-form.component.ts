@@ -40,7 +40,7 @@ export class EmployFormComponent implements OnInit {
     this.employService.selectedEmployee$.subscribe((employ) => {
       
       this.selectedEmployee = employ;
-      if(this.selectedEmployee != null){
+      
         if(Object.keys(this.selectedEmployee).length > 0){
           let birthdateEmployee =  this.datePipe.transform( this.selectedEmployee.birthdate, 'fullDate', 'es-MX' );
           this.employReactiveForm.setValue({
@@ -50,8 +50,16 @@ export class EmployFormComponent implements OnInit {
             fecha: new Date(birthdateEmployee != null ? birthdateEmployee : 0),
             telefono: this.selectedEmployee.phone
           });
+        }else{
+          this.employReactiveForm.setValue({
+            nombre: '',
+            apellido: '',
+            email: '',
+            fecha: new Date(),
+            telefono: ''
+          });
         }
-      }
+      
     })
     
   }

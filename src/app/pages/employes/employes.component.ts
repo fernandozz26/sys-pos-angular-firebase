@@ -26,6 +26,8 @@ export class EmployesComponent implements OnInit {
   resetSelectedForm(showForm:boolean):void{
     if(Object.keys(this.selectedEmployee).length > 0){
       this.employeeService.updateSelectedEmployee({}, showForm);
+    }else{
+      this.employeeService.updateActiveForm(showForm);
     }
   }
 
