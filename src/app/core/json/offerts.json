@@ -42,7 +42,7 @@
             {"val1": "", "val2bold":"1000000", "val3":"Empleados", "val4bold":""},
             {"val1": "", "val2bold":"Productos Ilimitados", "val3":"", "val4bold":""}
           ],
-          "price":1500,
+          "price":2000,
           "discount": 30
         }
     }

@@ -12,11 +12,11 @@
             </div>
           </div>
 
-          <div *ngIf="authenticated" (click)="showAccountOptions = !showAccountOptions" class="mt-2 flex absolute -right-16 text-white p-0 m-0 hover:cursor-pointer">
+          <div *ngIf="authenticated" (click)="showAccountOptions = !showAccountOptions" class="mt-2 flex fixed z-50 right-10 text-white  hover:cursor-pointer ">
             <p>Nombre de usuario</p>
             <mat-icon  matBadge="1" class="ml-5 text-3xl" aria-hidden="false">account_box</mat-icon>
 
-            <div class="absolute block top-8 -left-1  w-56 p-0 m-0 bg-white z-10" *ngIf="showAccountOptions">
+            <div class="absolute block top-10 -left-1  w-56 p-0 m-0 bg-white " *ngIf="showAccountOptions">
                 <mat-nav-list role="list" class="p-0 m-0">
                   <mat-list-item><button > <mat-icon class="mr-2 -mb-1">settings</mat-icon>Configuracion </button></mat-list-item>
                   <mat-list-item><button ><mat-icon class="mr-2 -mb-1">assignment_turned_in</mat-icon>Mejorar Plan</button></mat-list-item>

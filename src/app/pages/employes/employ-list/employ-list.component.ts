@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { EmployService } from '../service/employ.service';
-import { Employ } from '../../../core/model/employ.class';
+import { Employ } from '../../../core/model/employ.interface';
 import {  MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -15,25 +15,23 @@ import {  MatTableDataSource } from '@angular/material/table';
 
 export class EmployListComponent implements OnInit{
   dataSoruce = new MatTableDataSource<Employ>();
-  displayedColumns:string[] = ['Nombre', 'Apellido', 'Email', 'Fecha_Nacimiento', 'Telefono'];
+  displayedColumns:string[] = ['Nombre', 'Apellido', 'Email', 'Fecha_Nacimiento', 'Telefono', 'Accion'];
   
   constructor(private employService:EmployService){
     
   }
 
   ngOnInit(): void {
-    this.employService.employesSubject$.subscribe(data => {
+    this.employService.employesData$.subscribe(data => {
       this.dataSoruce.data = data;
-      
     })
   }
+  deleteEmploy(employ:Employ){
+    this.employService.deleteEmployee(employ);
+  }
+
+  editEmployee(employ:Employ){
+    this.employService.updateSelectedEmployee(employ);
+  }
   
-  
-
-  
-
-  
-
-
-
 }

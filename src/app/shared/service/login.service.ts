@@ -14,9 +14,10 @@ export class LoginService implements OnInit {
   public isAuthenticated$ = new BehaviorSubject<boolean>(this.token != null);
   getAuth = inject(Auth);
   constructor(private router: Router) {
-    
+    if(typeof sessionStorage != undefined){
+      this.isAuthenticated$.next(true);
+    }
   }
-
   ngOnInit(): void {
     
   }
@@ -30,7 +31,6 @@ export class LoginService implements OnInit {
     if (this.token != null) {
       sessionStorage.setItem('userToken', this.token);
       this.isAuthenticated$.next(this.token != null);
-      this.router.navigate(['/home']);
     }
   }
 
@@ -45,7 +45,7 @@ export class LoginService implements OnInit {
               this.token = userToken;
               sessionStorage.setItem('userToken', this.token);
               this.isAuthenticated$.next(this.token != null);
-              this.router.navigate(['/home']);
+              this.router.navigate(['sales']);
             },
             (error) => {
               this.isAuthenticated$.next(false);

@@ -1,29 +1,25 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
-import { Employ } from '../../../core/model/employ.class';
+import { Employ } from '../../../core/model/employ.interface';
 import { EmployService } from '../service/employ.service';
+import { DatePipe } from '@angular/common';
+import e from 'express';
 
 @Component({
   selector: 'app-employ-form',
   standalone: true,
   imports: [SharedModule],
+  providers:[DatePipe],
   templateUrl: './employ-form.component.html',
   styleUrl: './employ-form.component.scss',
 })
 export class EmployFormComponent implements OnInit {
   employReactiveForm!: FormGroup;
   employsData!: Employ[];
-  firsName!: string;
-  lastName!: string;
-  email!: string;
-  birthdate: Date = new Date();
-  phone!: number;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private employService: EmployService
-  ) {
+  showForm!:boolean;
+  selectedEmployee!: Employ;
+  constructor( private formBuilder: FormBuilder,  private employService: EmployService,  private datePipe: DatePipe) {
     this.employReactiveForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -32,34 +28,68 @@ export class EmployFormComponent implements OnInit {
       telefono: ['', [Validators.required, Validators.pattern(/^[0-9]*$/)]],
     });
   }
+
   ngOnInit(): void {
     this.employService.employesData$.subscribe((data) => {
       this.employsData = data;
     });
+    this.employService.activeForm$.subscribe( (data) => {
+      this.showForm = data;
+    });
+
+    this.employService.selectedEmployee$.subscribe((employ) => {
+      
+      this.selectedEmployee = employ;
+      if(this.selectedEmployee != null){
+        if(Object.keys(this.selectedEmployee).length > 0){
+          let birthdateEmployee =  this.datePipe.transform( this.selectedEmployee.birthdate, 'fullDate', 'es-MX' );
+          this.employReactiveForm.setValue({
+            nombre: this.selectedEmployee.firsName,
+            apellido: this.selectedEmployee.lastName,
+            email: this.selectedEmployee.email,
+            fecha: new Date(birthdateEmployee != null ? birthdateEmployee : 0),
+            telefono: this.selectedEmployee.phone
+          });
+        }
+      }
+    })
+    
   }
 
   saveEmploy(): boolean {
-    if (
-      this.employReactiveForm.get('nombre')?.valid &&
-      this.employReactiveForm.get('apellido')?.valid &&
-      this.employReactiveForm.get('email')?.valid &&
-      this.employReactiveForm.get('fecha')?.valid &&
-      this.employReactiveForm.get('telefono')?.valid
-    ) {
+    if (this.employReactiveForm.get('nombre')?.valid && this.employReactiveForm.get('apellido')?.valid && this.employReactiveForm.get('email')?.valid && this.employReactiveForm.get('fecha')?.valid && this.employReactiveForm.get('telefono')?.valid) {
+
+      let birthdateEmployee =  this.datePipe.transform( this.employReactiveForm.get('fecha')?.value, 'fullDate', 'es-MX' );
       let employ:Employ = 
-        new Employ(
-          this.employReactiveForm.get('nombre')?.value,
-          this.employReactiveForm.get('apellido')?.value,
-          this.employReactiveForm.get('email')?.value,
-          this.employReactiveForm.get('fecha')?.value,
-          this.employReactiveForm.get('telefono')?.value
-        );
-      
-      this.employService.updateEmployesData(employ);
-      
+        {
+          firsName:this.employReactiveForm.get('nombre')?.value,
+          lastName:this.employReactiveForm.get('apellido')?.value,
+          email:this.employReactiveForm.get('email')?.value,
+          birthdate:  birthdateEmployee != null ? birthdateEmployee : "None",
+          phone:this.employReactiveForm.get('telefono')?.value
+        };
+
+      if(Object.keys(this.selectedEmployee).length > 0){
+        this.employService.updateEmployee(this.selectedEmployee, employ);
+        this.resetSelectedForm(false);
+      }else{
+        this.employService.saveEmployesData(employ);
+      }
       return true;
     } else {
       return false;
     }
   }
+
+  resetSelectedForm(showForm:boolean):void{
+    if(Object.keys(this.selectedEmployee).length > 0){
+      console.log("limpiar employee");
+      this.employService.updateSelectedEmployee({}, showForm);
+    }
+  }
+  
+  changeForm(showForm: boolean): void{
+    this.employService.updateActiveForm(showForm);
+  }
+  
 }

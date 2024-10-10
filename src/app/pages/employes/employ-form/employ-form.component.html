@@ -1,62 +1,63 @@
-<mat-card  class="w-4/5 m-auto mt-5" appearance="outlined">
-    <mat-card-header>
-        <mat-card-title>
-            Formulario empleado
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <form [formGroup]="employReactiveForm" #employForm (submit)="saveEmploy() ? employForm.reset() : null">
+<div class="fixed bg-gray-600 bg-opacity-70 w-full h-full top-0 z-50" *ngIf="showForm">
 
-            <div class="w-full flex items-center justify-cente">
+    <div  class="w-[40rem] mt-10 fixed bg-white transform -translate-x-1/2 left-1/2 rounded-xl " appearance="outlined">
+        <div class="m-7">
+            <label>Formulario empleado</label>
+        </div>
+        <div class="m-7">
+            <form [formGroup]="employReactiveForm" #employForm (submit)="saveEmploy() ? employForm.reset() : null">
+    
+                <div class="w-full flex items-center justify-cente">
+    
+                    <mat-form-field class="w-1/2 mt-3 mr-2" >
+                        <mat-label>Nombre(s)</mat-label>
+                        <input type="text" matInput id="nombre" formControlName="nombre">
+                        <mat-error
+                            *ngIf="employReactiveForm?.get('nombre')?.invalid && employReactiveForm?.get('nombre')?.touched">¡Este
+                            campo es obligatorio!</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field class="w-1/2 mt-3 mr-2" >
+                        <mat-label>Apellidos</mat-label>
+                        <input type="text" matInput id="apellido" formControlName="apellido">
+                        <mat-error
+                            *ngIf="employReactiveForm?.get('apellido')?.invalid && employReactiveForm?.get('apellido')?.touched">¡Este campo es obligatorio!</mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <div class="w-full flex items-center justify-cente">
+                    <mat-form-field class="w-1/2 mt-3 mr-2" >
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput id="email" formControlName="email">
+                        <mat-error
+                            *ngIf="employReactiveForm?.get('email')?.invalid && employReactiveForm?.get('email')?.touched">¡Este
+                            campo es
+                            obligatorio!</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field class="w-1/2 mt-3 mr-2" >
+                        <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Fecha nacimiento">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+    
+                <div class="w-full flex items-center justify-cente">
+                    <mat-form-field class="w-1/2 mt-3 mr-2" >
+                        <mat-label>Telefono</mat-label>
+                        <input type="tel" matInput id="telefono" formControlName="telefono" />
+                        <mat-error
+                            *ngIf="employReactiveForm?.get('telefono')?.invalid && employReactiveForm?.get('telefono')?.touched">¡Este
+                            campo solo permite numeros!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button type="button" mat-button (click)="changeForm(false); resetSelectedForm(false);">Cerrar</button>
+                    <button type="reset" mat-button (click)="resetSelectedForm(true);">Limpiar</button>
+                    <button type="submit" mat-flat-button>Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-                <mat-form-field class="w-1/3 mt-3 mr-2" >
-                    <mat-label>Nombre(s)</mat-label>
-                    <input type="text" matInput id="nombre" formControlName="nombre">
-                    <mat-error
-                        *ngIf="employReactiveForm?.get('nombre')?.invalid && employReactiveForm?.get('nombre')?.touched">¡Este
-                        campo es obligatorio!</mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="w-1/3 mt-3 mr-2" >
-                    <mat-label>Apellidos</mat-label>
-                    <input type="text" matInput id="apellido" formControlName="apellido">
-                    <mat-error
-                        *ngIf="employReactiveForm?.get('apellido')?.invalid && employReactiveForm?.get('apellido')?.touched">¡Este campo es obligatorio!</mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="w-1/3 mt-3 mr-2" >
-                    <mat-label>Email</mat-label>
-                    <input type="email" matInput id="email" formControlName="email">
-                    <mat-error
-                        *ngIf="employReactiveForm?.get('email')?.invalid && employReactiveForm?.get('email')?.touched">¡Este
-                        campo es
-                        obligatorio!</mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="w-full flex items-center justify-cente">
-
-                <mat-form-field class="w-1/3 mt-3 mr-2" >
-                    <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Fecha nacimiento">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-
-                <mat-form-field class="w-1/3 mt-3 mr-2" >
-                    <mat-label>Telefono</mat-label>
-                    <input type="tel" matInput id="telefono" formControlName="telefono" />
-                    <mat-error
-                        *ngIf="employReactiveForm?.get('telefono')?.invalid && employReactiveForm?.get('telefono')?.touched">¡Este
-                        campo solo permite numeros!</mat-error>
-                </mat-form-field>
-            </div>
-        </form>
-
-        <mat-card-footer>
-            <mat-card-actions>
-                <button type="reset" mat-button>Limpiar</button>
-                <button type="submit" mat-button>Guardar</button>
-            </mat-card-actions>
-        </mat-card-footer>
-    </mat-card-content>
-</mat-card>
+</div>

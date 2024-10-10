@@ -15,7 +15,6 @@ export class LoginGuard implements CanActivate{
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
         this.loginService.isAuthenticated$.subscribe(res => {this.isAuthenticated = res;})
-        console.log(this.isAuthenticated)
         if(this.isAuthenticated){
             return true;
         }else{
